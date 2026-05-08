@@ -1,27 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
+
+// استيراد الملفات من Assets
 import floralCorner from "@/assets/floral-corner.png";
 import floralWreath from "@/assets/floral-wreath.png";
-import { RsvpForm } from "@/components/RsvpForm";
+import weddingFavicon from "@/assets/weddingFavicon.png"; // استيراد الأيقونة
+
 import { MusicToggle } from "@/components/MusicToggle";
 import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    title: "Mohamed & Sana — Wedding Invitation",
     meta: [
-      { title: "Mohamed & Sana — Wedding Invitation · 27 May 2026" },
       {
         name: "description",
-        content:
-          "You are invited to the wedding of Mohamed & Sana on Wednesday, 27 May 2026 at Hindpool Community Centre, Barrow-in-Furness.",
-      },
-      { property: "og:title", content: "Mohamed & Sana — Wedding Invitation" },
-      {
-        property: "og:description",
-        content: "Wednesday, 27 May 2026 · Hindpool Community Centre.",
+        content: "You are invited to the wedding of Mohamed & Sana on Wednesday, 27 May 2026.",
       },
     ],
+    // ربط الأيقونة بشكل صحيح باستخدام المسار المستورد
+    links: [{ rel: "icon", href: weddingFavicon }],
   }),
   component: Invitation,
 });
@@ -42,127 +41,116 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
 }
 
 function Invitation() {
-  const mapsUrl = "https://maps.app.goo.gl/NtBAcaEKnDdjedR76";
+  const mapsUrl = "https://maps.google.com"; // تأكدي من وضع رابط الخريطة الصحيح هنا
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-background">
       <MusicToggle />
       <Toaster position="top-center" />
 
-      {/* Decorative corner florals */}
+      {/* Decorative floral backgrounds */}
       <img
         src={floralCorner}
         alt=""
-        aria-hidden
-        className="pointer-events-none select-none absolute top-0 left-0 w-[55%] max-w-[420px] -translate-x-[15%] -translate-y-[10%] opacity-95"
+        className="pointer-events-none absolute top-0 left-0 w-[55%] max-w-[400px] -translate-x-[10%] -translate-y-[10%] opacity-90"
       />
       <img
         src={floralCorner}
         alt=""
-        aria-hidden
-        className="pointer-events-none select-none absolute top-0 right-0 w-[55%] max-w-[420px] translate-x-[15%] -translate-y-[10%] opacity-95 -scale-x-100"
+        className="pointer-events-none absolute top-0 right-0 w-[55%] max-w-[400px] translate-x-[10%] -translate-y-[10%] opacity-90 -scale-x-100"
       />
       <img
         src={floralCorner}
         alt=""
-        aria-hidden
-        className="pointer-events-none select-none absolute bottom-0 left-0 w-[55%] max-w-[420px] -translate-x-[15%] translate-y-[10%] opacity-95 -scale-y-100"
+        className="pointer-events-none absolute bottom-0 left-0 w-[55%] max-w-[400px] -translate-x-[10%] translate-y-[10%] opacity-90 -scale-y-100"
       />
       <img
         src={floralCorner}
         alt=""
-        aria-hidden
-        className="pointer-events-none select-none absolute bottom-0 right-0 w-[55%] max-w-[420px] translate-x-[15%] translate-y-[10%] opacity-95 -scale-100"
+        className="pointer-events-none absolute bottom-0 right-0 w-[55%] max-w-[400px] translate-x-[10%] translate-y-[10%] opacity-90 -scale-100"
       />
 
-      <div className="relative max-w-2xl mx-auto pt-16 pb-24 z-10">
-        {/* Bismillah */}
-        <Section className="text-center pt-8">
-          <h1 className="font-arabic text-3xl md:text-4xl text-[var(--primary)] leading-loose">
+      <div className="relative max-w-2xl mx-auto pt-24 pb-32 z-10">
+        {/* Bismillah & Verse */}
+        <Section className="text-center">
+          <h1 className="font-arabic text-4xl md:text-5xl text-primary leading-loose">
             بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
           </h1>
-          <div className="mt-6 mx-auto w-24 h-px bg-border" />
+          <p className="font-arabic text-2xl md:text-3xl text-primary/80 mt-4 leading-relaxed">
+            "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا
+            وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً"
+          </p>
+          <div className="mt-6 mx-auto w-24 h-px bg-border/60" />
         </Section>
 
-        {/* Invitation line */}
+        {/* Introduction */}
         <Section className="text-center mt-12">
-          <p className="font-display text-2xl md:text-3xl text-foreground/80 italic leading-relaxed">
-            You Are Invited<br />To The Wedding Of
+          <p className="font-display text-2xl md:text-3xl text-foreground/70 italic tracking-wide">
+            You Are Invited <br /> To The Wedding Of
           </p>
         </Section>
 
-        {/* Names with wreath */}
+        {/* The Couple Names */}
         <Section className="mt-10 flex items-center justify-center">
-          <div className="relative w-[88vw] max-w-[440px] aspect-square flex items-center justify-center">
+          <div className="relative w-[100vw] max-w-[700px] aspect-square flex items-center justify-center">
             <img
               src={floralWreath}
-              alt="Floral wreath surrounding the couple's names"
+              alt=""
               className="absolute inset-0 w-full h-full object-contain"
-              width={1024}
-              height={1024}
             />
-            <div className="relative text-center px-10">
-              <p className="font-script text-6xl md:text-7xl text-[var(--primary)] leading-[0.9]">Mohamed</p>
-              <p className="font-display italic text-2xl my-3 text-[var(--rose)]">&</p>
-              <p className="font-script text-6xl md:text-7xl text-[var(--primary)] leading-[0.9]">Sana</p>
+            <div className="relative text-center flex flex-col items-center justify-center h-full">
+              {/* تعديل الإزاحة لليمين pl-10 */}
+              <p className="font-names text-5xl md:text-8xl text-primary italic leading-[0.9] md:leading-[1] mb-1 pl-10 translate-x-3">
+                Mohamed
+              </p>
+              <p className="font-names text-3xl md:text-4xl my-1 md:my-2 text-rose italic">&</p>
+              <p className="font-names text-5xl md:text-8xl text-primary italic leading-[0.9] md:leading-[1]">
+                Sana
+              </p>
             </div>
           </div>
         </Section>
 
-        {/* Date */}
+        {/* Date Details */}
         <Section className="mt-14 text-center">
-          <p className="tracking-[0.35em] text-sm text-muted-foreground uppercase">May</p>
-          <div className="mt-4 flex items-center justify-center gap-6 md:gap-10">
-            <div className="border border-border px-4 py-2 text-xs tracking-[0.3em] uppercase text-muted-foreground">
+          <p className="tracking-[0.4em] text-xs text-muted-foreground uppercase mb-4">May</p>
+          <div className="flex items-center justify-center gap-4 md:gap-8">
+            <div className="border-y border-border py-2 px-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
               Wednesday
             </div>
-            <div className="font-display text-7xl md:text-8xl text-[var(--primary)]">27</div>
-            <div className="border border-border px-4 py-2 text-xs tracking-[0.3em] uppercase text-muted-foreground">
+            <div className="font-display text-7xl md:text-8xl text-primary">27</div>
+            <div className="border-y border-border py-2 px-4 text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
               At 07:00 PM
             </div>
           </div>
-          <p className="mt-4 font-display text-xl text-foreground/70">2026</p>
+          <p className="mt-4 font-display text-xl text-foreground/60">2026</p>
         </Section>
 
-        {/* Location */}
+        {/* Venue Details */}
         <Section className="mt-16 text-center">
-          <div className="mx-auto w-12 h-px bg-border mb-6" />
-          <h2 className="font-display text-2xl md:text-3xl text-[var(--primary)]">
+          <h2 className="font-display text-2xl md:text-3xl text-primary mb-3">
             Hindpool Community Centre
           </h2>
-          <p className="mt-3 text-muted-foreground italic">
-            Nelson St, Barrow-in-Furness<br />LA14 1NF
+          <p className="text-muted-foreground italic text-sm">
+            Nelson St, Barrow-in-Furness <br /> LA14 1NF
           </p>
           <a
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-7 px-7 py-3 border border-[var(--primary)] text-[var(--primary)] tracking-[0.25em] text-xs uppercase hover:bg-[var(--primary)] hover:text-primary-foreground transition-all"
+            className="inline-flex items-center gap-2 mt-8 px-10 py-3 border border-primary text-primary tracking-[0.2em] text-[10px] uppercase hover:bg-primary hover:text-white transition-all"
           >
-            <MapPin size={14} />
-            View Location on Map
+            <MapPin size={14} /> View Location on Map
           </a>
         </Section>
 
-        {/* RSVP */}
+        {/* Closing Arabic Text */}
         <Section className="mt-24 text-center">
-          <div className="mx-auto w-12 h-px bg-border mb-6" />
-          <p className="font-script text-5xl text-[var(--rose)] mb-2">Kindly RSVP</p>
-          <p className="text-muted-foreground italic mb-10">
-            Your presence would honour us
+          <p className="font-arabic text-3xl text-primary">
+            بَارَكَ ٱللَّٰهُ لَهُمَا وَبَارَكَ عَلَيْهُمَا <br /> وَجَمَعَ بَيْنَهُمَا فِي خَيْرٍ
           </p>
-          <div className="px-2">
-            <RsvpForm />
-          </div>
-        </Section>
-
-        {/* Footer */}
-        <Section className="mt-24 text-center">
-          <p className="font-arabic text-xl text-[var(--primary)]">
-            بَارَكَ ٱللَّٰهُ لَكُمَا
-          </p>
-          <p className="mt-3 text-xs tracking-[0.3em] uppercase text-muted-foreground">
-            With Love · Mohamed &amp; Sana
+          <p className="mt-8 text-[10px] tracking-[0.3em] uppercase text-muted-foreground opacity-60">
+            With Love · Mohamed & Sana
           </p>
         </Section>
       </div>

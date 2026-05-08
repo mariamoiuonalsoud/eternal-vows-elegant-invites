@@ -45,9 +45,7 @@ export function RsvpForm() {
         className="text-center py-12 px-6"
       >
         <p className="font-script text-5xl text-[var(--rose)] mb-4">Thank You</p>
-        <p className="text-muted-foreground italic">
-          Your kind response means the world to us.
-        </p>
+        <p className="text-muted-foreground italic">Your kind response means the world to us.</p>
       </motion.div>
     );
   }

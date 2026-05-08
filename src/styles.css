@@ -1,88 +1,43 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=Italianno&family=Amiri:wght@400;700&display=swap');
-
-@custom-variant dark (&:is(.dark *));
+/* استدعاء نظيف وشامل لكل الخطوط المطلوبة من Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap");
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-sage: var(--sage);
-  --color-rose: var(--rose);
-  --color-gold: var(--gold);
-  --font-display: var(--font-display);
-  --font-serif: var(--font-serif);
-  --font-script: var(--font-script);
-  --font-arabic: var(--font-arabic);
-}
+  /* تعريف الألوان الأساسية */
+  --color-background: oklch(0.965 0.013 85);
+  --color-foreground: oklch(0.32 0.025 60);
+  --color-primary: oklch(0.45 0.04 60);
+  --color-rose: oklch(0.78 0.07 25);
+  --color-border: oklch(0.85 0.025 70);
 
-:root {
-  --radius: 0.5rem;
-  /* Cream / beige palette */
-  --background: oklch(0.965 0.013 85);
-  --foreground: oklch(0.32 0.025 60);
-  --card: oklch(0.98 0.008 85);
-  --card-foreground: oklch(0.32 0.025 60);
-  --popover: oklch(0.98 0.008 85);
-  --popover-foreground: oklch(0.32 0.025 60);
-  --primary: oklch(0.45 0.04 60);
-  --primary-foreground: oklch(0.97 0.013 85);
-  --secondary: oklch(0.92 0.02 85);
-  --secondary-foreground: oklch(0.32 0.025 60);
-  --muted: oklch(0.93 0.015 85);
-  --muted-foreground: oklch(0.5 0.025 60);
-  --accent: oklch(0.82 0.05 35);
-  --accent-foreground: oklch(0.25 0.03 60);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.97 0.013 85);
-  --border: oklch(0.85 0.025 70);
-  --input: oklch(0.9 0.015 80);
-  --ring: oklch(0.7 0.05 50);
-
-  --sage: oklch(0.72 0.05 140);
-  --rose: oklch(0.78 0.07 25);
-  --gold: oklch(0.75 0.08 75);
-
-  --font-display: 'Playfair Display', serif;
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-script: 'Pinyon Script', 'Italianno', cursive;
-  --font-arabic: 'Amiri', serif;
+  /* تعريف الخطوط ليتم التعرف عليها كـ classes تلقائياً */
+  --font-names: "Great Vibes", cursive;
+  --font-arabic: "Amiri", serif;
+  --font-display: "Playfair Display", serif;
+  --font-serif: "Cormorant Garamond", serif;
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-serif);
-    font-size: 1.05rem;
+    /* الخط الافتراضي لبقية نصوص الموقع */
+    font-family: "Cormorant Garamond", serif !important;
   }
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.01em; }
 }
 
-.font-script { font-family: var(--font-script); }
-.font-arabic { font-family: var(--font-arabic); direction: rtl; }
-.font-display { font-family: var(--font-display); }
+/* Force CSS Classes - لضمان تطبيق الخط حتى لو تعارض التيلويند */
+.font-display {
+  font-family: "Monsieur La Doulaise", cursive !important;
+}
+
+.font-arabic {
+  font-family: "Harmattan", sans-serif !important;
+  direction: rtl;
+}
+
+.font-names {
+  font-family: "Playfair Display", serif !important;
+}
