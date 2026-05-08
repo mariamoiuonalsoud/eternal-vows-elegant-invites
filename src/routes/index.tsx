@@ -102,9 +102,9 @@ function Invitation() {
               height={1024}
             />
             <div className="relative text-center px-10">
-              <p className="font-script text-5xl md:text-6xl text-[var(--primary)] leading-none">Mohamed</p>
-              <p className="font-display italic text-2xl my-2 text-[var(--rose)]">&</p>
-              <p className="font-script text-5xl md:text-6xl text-[var(--primary)] leading-none">Sana</p>
+              <p className="font-script text-6xl md:text-7xl text-[var(--primary)] leading-[0.9]">Mohamed</p>
+              <p className="font-display italic text-2xl my-3 text-[var(--rose)]">&</p>
+              <p className="font-script text-6xl md:text-7xl text-[var(--primary)] leading-[0.9]">Sana</p>
             </div>
           </div>
         </Section>
