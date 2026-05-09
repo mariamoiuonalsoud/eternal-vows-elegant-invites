@@ -22,20 +22,26 @@ export function MusicToggle() {
     audio.addEventListener("pause", syncState);
 
     // Try immediate autoplay (likely blocked by browsers)
-    audio.play().then(syncState).catch(() => {
-      // Fallback: start on first user interaction
-    });
+    audio
+      .play()
+      .then(syncState)
+      .catch(() => {
+        // Fallback: start on first user interaction
+      });
 
     const handleFirstInteraction = () => {
       if (userMutedRef.current) return;
       if (audio.paused) {
-        audio.play().then(syncState).catch(() => {});
+        audio
+          .play()
+          .then(syncState)
+          .catch(() => {});
       }
     };
 
     const interactionEvents = ["click", "touchstart", "scroll", "keydown", "mousemove"];
     interactionEvents.forEach((evt) =>
-      window.addEventListener(evt, handleFirstInteraction, { passive: true })
+      window.addEventListener(evt, handleFirstInteraction, { passive: true }),
     );
 
     // Pause when tab becomes hidden, resume when visible (unless user muted)
@@ -57,9 +63,7 @@ export function MusicToggle() {
     window.addEventListener("beforeunload", handlePageHide);
 
     return () => {
-      interactionEvents.forEach((evt) =>
-        window.removeEventListener(evt, handleFirstInteraction)
-      );
+      interactionEvents.forEach((evt) => window.removeEventListener(evt, handleFirstInteraction));
       document.removeEventListener("visibilitychange", handleVisibility);
       window.removeEventListener("pagehide", handlePageHide);
       window.removeEventListener("beforeunload", handlePageHide);
@@ -81,9 +85,10 @@ export function MusicToggle() {
       audio.pause();
     } else {
       userMutedRef.current = false;
-      audio.play().then(() => setPlaying(true)).catch((err) =>
-        console.error("Playback failed:", err)
-      );
+      audio
+        .play()
+        .then(() => setPlaying(true))
+        .catch((err) => console.error("Playback failed:", err));
     }
   };
 
