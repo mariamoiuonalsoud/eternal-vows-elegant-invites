@@ -81,11 +81,11 @@ export default function App() {
               className="absolute inset-0 w-full h-full object-contain"
             />
             <div className="relative text-center flex flex-col items-center justify-center h-full">
-              <p className="font-names text-5xl md:text-5xl text-primary italic leading-[0.9] md:leading-none mb-1 pl-4.9 translate-x-3">
+              <p className="font-names text-4xl md:text-5xl text-primary italic leading-none mb-1">
                 Mohamed
               </p>
-              <p className="font-names text-3xl md:text-4xl my-1 md:my-2 text-rose italic">&</p>
-              <p className="font-names text-5xl md:text-5xl text-primary italic leading-[0.9] md:leading-none">
+              <p className="font-names text-2xl md:text-4xl my-1 md:my-2 text-rose italic">&</p>
+              <p className="font-names text-4xl md:text-5xl text-primary italic leading-none">
                 Sana
               </p>
             </div>
