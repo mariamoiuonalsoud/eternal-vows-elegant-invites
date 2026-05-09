@@ -23,7 +23,7 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
 }
 
 export default function App() {
-  const mapsUrl = "https://maps.google.com";
+  const mapsUrl = "https://maps.app.goo.gl/NtBAcaEKnDdjedR76?g_st=aw";
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-background">
