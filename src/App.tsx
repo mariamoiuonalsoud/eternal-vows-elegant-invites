@@ -1,28 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 
-// استيراد الملفات من Assets
 import floralCorner from "@/assets/floral-corner.png";
 import floralWreath from "@/assets/floral-wreath.png";
-import weddingFavicon from "@/assets/weddingFavicon.png";
 
 import { MusicToggle } from "@/components/MusicToggle";
 import { Toaster } from "@/components/ui/sonner";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    title: "Mohamed & Sana — Wedding Invitation",
-    meta: [
-      {
-        name: "description",
-        content: "You are invited to the wedding of Mohamed & Sana on Wednesday, 27 May 2026.",
-      },
-    ],
-    links: [{ rel: "icon", href: weddingFavicon }],
-  }),
-  component: Invitation,
-});
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -39,7 +22,7 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
   );
 }
 
-function Invitation() {
+export default function App() {
   const mapsUrl = "https://maps.google.com";
 
   return (
@@ -47,7 +30,7 @@ function Invitation() {
       <MusicToggle />
       <Toaster position="top-center" />
 
-      {/* Decorative floral backgrounds - Updated classes to resolve Tailwind warnings */}
+      {/* Decorative floral backgrounds */}
       <img
         src={floralCorner}
         alt=""
